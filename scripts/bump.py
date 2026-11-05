@@ -7,12 +7,12 @@ import re
 import sys
 import urllib.request
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STORES = {"claude": (".claude-plugin", "marketplace.json"), "codex": (".agents", "plugins", "marketplace.json")}
-OWNER_URL = re.compile(r"^https://github\.com/SolanceLab/([A-Za-z0-9._-]+)\.git$")
-SEMVER = re.compile(r"^v(\d+)\.(\d+)\.(\d+)$")
 MAKE_VAR = re.compile(r"^([ \t]*)([A-Za-z_][A-Za-z0-9_]*)([ \t]*[:?]?=[ \t]*)(v\d+\.\d+\.\d+)([ \t]*)$", re.M)
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 KNOWN_ROOMS = {"antechamber", "scriptorium", "vault-map", "stack-guard"}  # repos a Makefile may pin
+SEMVER = re.compile(r"^v(\d+)\.(\d+)\.(\d+)$")
+OWNER_URL = re.compile(r"^https://github\.com/SolanceLab/([A-Za-z0-9._-]+)\.git$")
 
 
 def parse_semver(tag):
