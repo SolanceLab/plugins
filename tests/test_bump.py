@@ -143,7 +143,7 @@ class Plan(unittest.TestCase):
     def test_makefile_var_bumped_and_others_left(self):
         make = "ANTECHAMBER = v1.0.0\nOTHER = v1.0.0\nVAULT_MAP = v2.0.0\n"
         _, (_, text) = self.run_plan(make=make)
-        self.assertEqual(text, "ANTECHAMBER = v1.1.0\nOTHER = v1.0.0\nVAULT_MAP = v2.0.0\n")
+        self.assertEqual(text, "ANTECHAMBER = v1.1.0\nANTECHAMBER_SHA = %s\nOTHER = v1.0.0\nVAULT_MAP = v2.0.0\n" % ("b" * 40))
 
     def test_fetch_error_leaves_that_repo_and_others_bump(self):
         def flaky(repo):
@@ -285,6 +285,84 @@ class Main(unittest.TestCase):
         self.assertEqual(doc["plugins"][0]["source"]["ref"], "v1.0.0")
         self.assertNotIn("sha", doc["plugins"][2]["source"])
         self.assertEqual(bump.main(["--check"], self.tmp, fetch, releases), 1)
+
+
+class MakefileSha(unittest.TestCase):
+    SHA = "a" * 40
+
+    def plan(self, make, d=None, f=fetch):
+        ch = bump.plan_bumps(d if d is not None else {}, make, f, releases)
+        return ch, bump.apply(d if d is not None else {}, make, ch)[1]
+
+    def test_sha_verified_and_not_unpinned(self):
+        ch, _ = self.plan("ANTECHAMBER = v1.0.0\nANTECHAMBER_SHA = %s\n" % self.SHA)
+        self.assertEqual(ch[0]["status"], "bumped")
+        self.assertNotIn("unpinned", ch[0])
+
+    def test_moved_makefile_tag_is_refused(self):
+        ch, _ = self.plan("ANTECHAMBER = v1.0.0\nANTECHAMBER_SHA = %s\n" % ("9" * 40))
+        self.assertEqual(ch[0]["status"], "tampered")
+
+    def test_move_writes_new_sha_and_leaves_other_vars(self):
+        make = "A = 1\nANTECHAMBER = v1.0.0\nANTECHAMBER_SHA = %s\nB = 2\n" % self.SHA
+        _, text = self.plan(make)
+        self.assertEqual(text, "A = 1\nANTECHAMBER = v1.1.0\nANTECHAMBER_SHA = %s\nB = 2\n" % ("b" * 40))
+
+    def test_move_adds_missing_sha_line_after_the_pin(self):
+        _, text = self.plan("A = 1\nANTECHAMBER = v1.0.0\nB = 2\n")
+        self.assertEqual(text, "A = 1\nANTECHAMBER = v1.1.0\nANTECHAMBER_SHA = %s\nB = 2\n" % ("b" * 40))
+
+    def test_pin_shas_adds_sha_for_current_ref(self):
+        make = "ANTECHAMBER = v1.0.0\n"
+        ch = bump.plan_bumps({}, make, fetch, releases)
+        self.assertEqual(bump.apply_make_pins(make, ch), "ANTECHAMBER = v1.0.0\nANTECHAMBER_SHA = %s\n" % self.SHA)
+
+    def test_sha_mismatch_with_marketplace_is_tampered(self):
+        ch, _ = self.plan("ANTECHAMBER = v1.0.0\nANTECHAMBER_SHA = %s\n" % ("9" * 40), d=docs())
+        mk = [c for c in ch if c["where"] == "makefile"][0]
+        self.assertEqual(mk["status"], "tampered")
+        self.assertIn("REFUSED", bump.describe(mk))
+
+
+class ChangelogHeading(unittest.TestCase):
+    LOG = "# Changelog\n\n## 1.0.0\n\nFirst.\n"
+
+    def changes(self):
+        return bump.plan_bumps(docs(), "", fetch, releases)
+
+    def test_heading_added_after_title_with_moved_list(self):
+        out = bump.changelog_with(self.LOG, "1.0.1", self.changes())
+        self.assertEqual(out, "# Changelog\n\n## 1.0.1\n\nPins moved to the newest releases: antechamber v1.0.0 \u2192 v1.1.0.\n\n## 1.0.0\n\nFirst.\n")
+
+    def test_not_duplicated_and_not_added_on_no_move(self):
+        once = bump.changelog_with(self.LOG, "1.0.1", self.changes())
+        self.assertEqual(bump.changelog_with(once, "1.0.1", self.changes()), once)
+        self.assertEqual(bump.changelog_with(self.LOG, "1.0.1", []), self.LOG)
+
+    def test_no_title_goes_on_top(self):
+        self.assertTrue(bump.changelog_with("## 1.0.0\n", "1.0.1", self.changes()).startswith("## 1.0.1\n"))
+
+
+class ChangelogMain(Main):
+    def setUp(self):
+        super().setUp()
+        self.log = os.path.join(self.tmp, "CHANGELOG.md")
+        with open(self.log, "w", encoding="utf-8") as fh:
+            fh.write("# Changelog\n\n## 1.0.0\n\nFirst.\n")
+
+    def text(self):
+        with open(self.log, encoding="utf-8") as fh:
+            return fh.read()
+
+    def test_real_run_writes_heading_dry_run_and_check_do_not(self):
+        before = self.text()
+        bump.main(["--dry-run"], self.tmp, fetch, releases)
+        bump.main(["--check"], self.tmp, fetch, releases)
+        self.assertEqual(self.text(), before)
+        bump.main([], self.tmp, fetch, releases)
+        self.assertTrue(self.text().startswith("# Changelog\n\n## 1.0.1\n"))
+        bump.main([], self.tmp, fetch, releases)  # nothing left to move
+        self.assertEqual(self.text().count("## 1.0.1"), 1)
 
 
 if __name__ == "__main__":

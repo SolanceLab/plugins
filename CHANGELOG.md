@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.4
+
+The daily update writes the matching changelog heading when it moves a pin, and Makefile pins carry their release commit too.
+
 ## 1.0.3
 
 The daily update trusts only published GitHub Releases, never a bare tag.

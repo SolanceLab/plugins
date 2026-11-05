@@ -11,6 +11,7 @@ STORES = {"claude": (".claude-plugin", "marketplace.json"), "codex": (".agents",
 MAKE_VAR = re.compile(r"^([ \t]*)([A-Za-z_][A-Za-z0-9_]*)([ \t]*[:?]?=[ \t]*)(v\d+\.\d+\.\d+)([ \t]*)$", re.M)
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 KNOWN_ROOMS = {"antechamber", "scriptorium", "vault-map", "stack-guard"}  # repos a Makefile may pin
+SHA40 = r"[0-9a-fA-F]{40}"
 SEMVER = re.compile(r"^v(\d+)\.(\d+)\.(\d+)$")
 OWNER_URL = re.compile(r"^https://github\.com/SolanceLab/([A-Za-z0-9._-]+)\.git$")
 
@@ -60,6 +61,27 @@ def sha_of(tags, name):
         if n == name:
             return sha
     return None
+
+
+def _make_sha_re(var):
+    return re.compile(r"^([ \t]*)%s_SHA([ \t]*[:?]?=[ \t]*)(%s)([ \t]*)$" % (re.escape(var), SHA40), re.M)
+
+
+def make_sha(text, var):
+    """The 40-hex commit recorded as `<var>_SHA = ...` in the Makefile, or None."""
+    m = _make_sha_re(var).search(text or "")
+    return m.group(3) if m else None
+
+
+def set_make_sha(text, var, sha):
+    """Write `<var>_SHA = sha` into the Makefile text: replace the line, or add it right after the `<var> = vX.Y.Z` line."""
+    m = _make_sha_re(var).search(text)
+    if m:
+        return text[:m.start(3)] + sha + text[m.end(3):]
+    for v in MAKE_VAR.finditer(text):
+        if v.group(2) == var:
+            return text[:v.end()] + "\n" + v.group(1) + var + "_SHA" + v.group(3) + sha + text[v.end():]
+    return text
 
 
 def _norm(path):
@@ -126,8 +148,17 @@ def plan_bumps(store_docs, makefile_text, fetch_tags, fetch_releases):
     for m in MAKE_VAR.finditer(makefile_text or ""):
         short = m.group(2).lower().replace("_", "-")
         if short in KNOWN_ROOMS:
-            sha = marketplace_shas.get((short, m.group(4)))  # cross-check against the store's pin
+            own = make_sha(makefile_text, m.group(2))
+            mkt = marketplace_shas.get((short, m.group(4)))  # cross-check against the store's pin
+            if own and mkt and own.lower() != mkt.lower():
+                changes.append({"where": "makefile", "name": short, "repo": short, "old": m.group(4), "var": m.group(2),
+                                "status": "tampered", "was": own, "now": mkt, "reason": "Makefile sha differs from the store's sha"})
+                continue
+            sha = own or mkt
             c = judge("makefile", short, short, m.group(4), sha)
+            c["var"], c["make_sha"] = m.group(2), own
+            got, _ = remote(short)
+            c["now_sha"] = sha_of(got[0], m.group(4)) if got else None
             if not sha:
                 c["unpinned"] = True
             changes.append(c)
@@ -168,7 +199,45 @@ def apply(store_docs, makefile_text, changes):
         new = make_moves.get(m.group(2).lower().replace("_", "-"))
         return m.group(1) + m.group(2) + m.group(3) + (new or m.group(4)) + m.group(5)
 
-    return docs, MAKE_VAR.sub(swap, makefile_text or "")
+    text = MAKE_VAR.sub(swap, makefile_text or "")
+    for c in changes:
+        if c["status"] == "bumped" and c["where"] == "makefile" and c.get("new_sha"):
+            text = set_make_sha(text, c["var"], c["new_sha"])
+    return docs, text
+
+
+def apply_make_pins(makefile_text, changes):
+    """Add `<VAR>_SHA` (the current ref's commit) to every Makefile pin that has none."""
+    text = makefile_text or ""
+    for c in changes:
+        if c["where"] == "makefile" and c["status"] in ("bumped", "current") and not c.get("make_sha") and c.get("now_sha"):
+            text = set_make_sha(text, c["var"], c["now_sha"])
+    return text
+
+
+def moved_pins(changes):
+    """'name vA -> vB' pairs of the bumped pins, each once (the Codex list repeats the Claude entries)."""
+    out = []
+    for c in changes:
+        if c["status"] == "bumped":
+            pair = "%s %s \u2192 %s" % (c["name"], c["old"], c["new"])
+            if pair not in out:
+                out.append(pair)
+    return out
+
+
+def changelog_with(text, version, changes):
+    """The CHANGELOG with a `## version` block for the moved pins, unless that heading is already the newest."""
+    moved = moved_pins(changes)
+    first = re.search(r"^## .*$", text, re.M)
+    if not moved or (first and first.group(0).strip() == "## " + version):
+        return text
+    block = "## %s\n\nPins moved to the newest releases: %s.\n\n" % (version, ", ".join(moved))
+    if not re.match(r"# ", text):
+        return block + text
+    if first:
+        return text[:first.start()] + block + text[first.start():]
+    return text.rstrip("\n") + "\n\n" + block.rstrip("\n") + "\n"
 
 
 def apply_pins(store_docs, changes):
@@ -192,6 +261,8 @@ def describe(c):
     if c["status"] == "needs-pin":
         return "needs-pin %s %s (no sha recorded; not moved)" % (c["name"], c["old"])
     if c["status"] == "tampered":
+        if c.get("reason"):
+            return "REFUSED: %s: %s (%s vs %s)" % (c["name"], c["reason"], _short(c["was"]), _short(c["now"]))
         if not c["now"]:
             return "REFUSED: %s tag %s vanished" % (c["name"], c["old"])
         return "REFUSED: %s tag %s moved from %s to %s" % (c["name"], c["old"], _short(c["was"]), _short(c["now"]))
@@ -233,6 +304,10 @@ def main(argv=None, root=ROOT, fetch=fetch_tags, releases=fetch_releases):
     if pin:
         if not dry:
             _write_docs(apply_pins(docs, changes), paths)
+            new_make = apply_make_pins(make_text, changes)
+            if new_make != make_text:
+                with open(make_path, "w", encoding="utf-8") as fh:
+                    fh.write(new_make)
         return 0
     todo = any(c["status"] == "bumped" for c in changes)
     if check:
@@ -243,6 +318,16 @@ def main(argv=None, root=ROOT, fetch=fetch_tags, releases=fetch_releases):
         if new_make != make_text:
             with open(make_path, "w", encoding="utf-8") as fh:
                 fh.write(new_make)
+        old_v = (docs.get("claude", {}).get("metadata") or {}).get("version")
+        new_v = (new_docs.get("claude", {}).get("metadata") or {}).get("version")
+        log_path = os.path.join(root, "CHANGELOG.md")
+        if new_v and new_v != old_v and os.path.exists(log_path):
+            with open(log_path, encoding="utf-8") as fh:
+                log = fh.read()
+            new_log = changelog_with(log, new_v, changes)
+            if new_log != log:
+                with open(log_path, "w", encoding="utf-8") as fh:
+                    fh.write(new_log)
     return 0
 
 
