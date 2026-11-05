@@ -50,6 +50,15 @@ each plugin's README (Antechamber: `ANTECHAMBER_MCP_KEY`).
 
 The store adds no tools of its own; each plugin brings its tools and skills, listed in its README.
 
+## Updates
+
+Third-party marketplaces do not auto-update by default. To turn it on once in Claude Code:
+`/plugin` > Marketplaces > `solancelab` > Enable auto-update.
+To update by hand: `claude plugin marketplace update solancelab`, then `claude plugin update <plugin>@solancelab`, then
+restart. In Codex: `codex plugin marketplace upgrade solancelab`.
+
+Each plugin may also tell you itself when a newer version is out; its README says how, and how to switch that off.
+
 ## Limits
 
 - Codex lists only the plugins that carry Codex files; the others say "coming" above.
