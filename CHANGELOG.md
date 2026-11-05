@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.3
+
+The daily update trusts only published GitHub Releases, never a bare tag.
+
 ## 1.0.2
 
 Each plugin is pinned to its release's commit (`sha`); the daily job refuses to run, and changes nothing, when a release tag no longer points at the recorded commit (`python3 scripts/bump.py --pin-shas` records shas).

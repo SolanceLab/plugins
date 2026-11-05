@@ -59,6 +59,7 @@ restart. In Codex: `codex plugin marketplace upgrade solancelab`.
 Each plugin is pinned to its release's exact commit; if a release tag is ever moved, the job refuses to run and changes nothing.
 
 The store updates itself: a daily job moves each plugin to its newest release, runs the store tests, and commits only when they pass.
+A plugin only moves when its new version is published as a GitHub Release; a bare version tag is ignored.
 
 Each plugin may also tell you itself when a newer version is out; its README says how, and how to switch that off.
 

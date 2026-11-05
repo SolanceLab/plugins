@@ -1,5 +1,5 @@
 # SolanceLab plugins — Copyright (c) 2026 House of Solance. PolyForm Noncommercial 1.0.0. Required Notice: Copyright (c) 2026 House of Solance (https://github.com/SolanceLab)
-"""Move every pinned plugin in the store to its repository's newest release tag (vX.Y.Z)."""
+"""Move every pinned plugin in the store to its repository's newest published GitHub Release (tag vX.Y.Z); a bare tag is never enough."""
 import copy
 import json
 import os
@@ -27,20 +27,31 @@ def latest_tag(tags):
     return max(good, key=parse_semver) if good else None
 
 
-def fetch_tags(repo):
-    """All (tag name, commit sha) pairs of SolanceLab/<repo>, following GitHub's Link pages."""
-    url = "https://api.github.com/repos/SolanceLab/%s/tags?per_page=100" % repo
+def _pages(url):
+    """Every JSON item of a GitHub list endpoint, following Link pages."""
     headers = {"User-Agent": "solancelab-plugins-bump", "Accept": "application/vnd.github+json"}
     if os.environ.get("GITHUB_TOKEN"):
         headers["Authorization"] = "Bearer " + os.environ["GITHUB_TOKEN"]
-    tags = []
+    items = []
     while url:
         with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=20) as r:
-            tags += [(t["name"], (t.get("commit") or {}).get("sha")) for t in json.load(r)]
+            items += json.load(r)
             link = r.headers.get("Link") or ""
         m = re.search(r'<([^>]+)>;\s*rel="next"', link)
         url = m.group(1) if m else None
-    return tags
+    return items
+
+
+def fetch_tags(repo):
+    """All (tag name, commit sha) pairs of SolanceLab/<repo>, following GitHub's Link pages."""
+    items = _pages("https://api.github.com/repos/SolanceLab/%s/tags?per_page=100" % repo)
+    return [(t["name"], (t.get("commit") or {}).get("sha")) for t in items]
+
+
+def fetch_releases(repo):
+    """Tag names of SolanceLab/<repo>'s PUBLISHED releases (not draft, not prerelease)."""
+    items = _pages("https://api.github.com/repos/SolanceLab/%s/releases?per_page=100" % repo)
+    return {r["tag_name"] for r in items if not r.get("draft") and not r.get("prerelease")}
 
 
 def sha_of(tags, name):
@@ -59,11 +70,12 @@ def _short(sha):
     return (sha or "")[:12]
 
 
-def plan_bumps(store_docs, makefile_text, fetch):
+def plan_bumps(store_docs, makefile_text, fetch_tags, fetch_releases):
     """Return one change dict per entry.
 
     status is bumped / current / skipped / error / tampered (a pinned tag moved or vanished)
     / needs-pin (an entry with no sha yet; it is never moved). Nothing is mutated.
+    A pin moves only to a tag that has a published Release; a higher bare tag is reported as `ignored`.
     store_docs: {"claude": doc, "codex": doc} (any subset).
     """
     cache = {}
@@ -71,25 +83,29 @@ def plan_bumps(store_docs, makefile_text, fetch):
     def remote(repo):
         if repo not in cache:
             try:
-                cache[repo] = (fetch(repo), None)
+                cache[repo] = ((fetch_tags(repo), set(fetch_releases(repo))), None)
             except Exception as exc:  # one repo failing must not stop the others
                 cache[repo] = (None, "%s: %s" % (type(exc).__name__, str(exc)[:80]))
         return cache[repo]
 
     def judge(where, name, repo, old, sha):
-        tags, err = remote(repo)
+        got, err = remote(repo)
         base = {"where": where, "name": name, "repo": repo, "old": old}
         if err:
             return dict(base, status="error", reason=err)
+        tags, released = got
         now = sha_of(tags, old)
         if sha and (now or "").lower() != sha.lower():
             return dict(base, status="tampered", was=sha, now=now)
         if not sha and where != "makefile":
             return dict(base, status="needs-pin", pin=now)
-        new = latest_tag([n for n, _ in tags])
+        names = [n for n, _ in tags]
+        new = latest_tag([n for n in names if n in released])
+        top = latest_tag(names)
+        ignored = top if top and top not in released and parse_semver(top) > parse_semver(old) else None
         if new and parse_semver(new) > parse_semver(old):
-            return dict(base, status="bumped", new=new, new_sha=sha_of(tags, new))
-        return dict(base, status="current")
+            return dict(base, status="bumped", new=new, new_sha=sha_of(tags, new), ignored=ignored)
+        return dict(base, status="current", ignored=ignored)
 
     changes = []
     marketplace_shas = {}  # (repo, ref) -> sha recorded in a marketplace entry
@@ -166,10 +182,11 @@ def apply_pins(store_docs, changes):
 
 
 def describe(c):
+    skip = " [ignored %s (no published release)]" % c["ignored"] if c.get("ignored") else ""
     if c["status"] == "bumped":
-        return "bumped %s: %s -> %s%s" % (c["name"], c["old"], c["new"], " (unpinned)" if c.get("unpinned") else "")
+        return "bumped %s: %s -> %s%s%s" % (c["name"], c["old"], c["new"], " (unpinned)" if c.get("unpinned") else "", skip)
     if c["status"] == "current":
-        return "up to date %s %s" % (c["name"], c["old"])
+        return "up to date %s %s%s" % (c["name"], c["old"], skip)
     if c["status"] == "skipped":
         return "skipped %s (%s)" % (c["name"], c["reason"])
     if c["status"] == "needs-pin":
@@ -188,7 +205,7 @@ def _write_docs(docs, paths):
             fh.write("\n")
 
 
-def main(argv=None, root=ROOT, fetch=fetch_tags):
+def main(argv=None, root=ROOT, fetch=fetch_tags, releases=fetch_releases):
     argv = sys.argv[1:] if argv is None else argv
     dry, check, pin = "--dry-run" in argv, "--check" in argv, "--pin-shas" in argv
     paths = {k: os.path.join(root, *parts) for k, parts in STORES.items()}
@@ -199,7 +216,7 @@ def main(argv=None, root=ROOT, fetch=fetch_tags):
                 docs[k] = json.load(fh)
     make_path = os.path.join(root, "Makefile")
     make_text = open(make_path, encoding="utf-8").read() if os.path.exists(make_path) else ""
-    changes = plan_bumps(docs, make_text, fetch)
+    changes = plan_bumps(docs, make_text, fetch, releases)
     seen = set()
     for c in changes:
         line = describe(c)
