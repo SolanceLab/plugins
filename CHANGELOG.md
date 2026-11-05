@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.1
+
+Pins moved to the newest releases: scriptorium v1.0.0 → v1.1.0.
+
 ## 1.0.4
 
 The daily update writes the matching changelog heading when it moves a pin, and Makefile pins carry their release commit too.
