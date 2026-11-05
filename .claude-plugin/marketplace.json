@@ -23,20 +23,6 @@
       }
     },
     {
-      "name": "antechamber-remote",
-      "description": "Antechamber behind a sign-in, for claude.ai and other cloud apps. Needs the remote door from the Antechamber README.",
-      "author": {
-        "name": "House of Solance"
-      },
-      "category": "memory",
-      "source": {
-        "source": "git-subdir",
-        "url": "https://github.com/SolanceLab/antechamber.git",
-        "path": "plugin-remote",
-        "ref": "v1.1.0"
-      }
-    },
-    {
       "name": "scriptorium",
       "description": "Turns your chat history into memories you can check, each with its exact words, source lines and real date; keeps a people roster that fills itself. Runs on your own computer.",
       "author": {

@@ -11,8 +11,7 @@ own repository; this store only points at them, so you add one store and see the
 
 | Plugin | What it does | Claude Code | Codex |
 |---|---|---|---|
-| [antechamber](https://github.com/SolanceLab/antechamber) | Recall for your AI: one question searches every store you connect and returns only the best matches. Runs on your own computer. | yes | yes |
-| [antechamber-remote](https://github.com/SolanceLab/antechamber) | The same Antechamber behind a sign-in, for claude.ai and other cloud apps. Needs the remote door from the Antechamber README. | yes | no |
+| [antechamber](https://github.com/SolanceLab/antechamber) | Recall for your AI: one question searches every store you connect and returns only the best matches. Runs on your own computer; claude.ai and ChatGPT can reach it through its remote door (see its README). | yes | yes |
 | [scriptorium](https://github.com/SolanceLab/scriptorium) | Turns your chat history into memories you can check, with their exact words, source lines and real dates. | yes | coming |
 | [stack-guard](https://github.com/SolanceLab/stack-guard) | Checks what you run for known security holes, explains them in plain words, and applies the safe fixes after your yes. | yes | coming |
 | [discord](https://github.com/SolanceLab/tertulia-ai-discord-engine) (Tertúlia) | Discord tools for your AI: messages, files, reactions, polls, threads, forums, moderation. | yes | coming |
