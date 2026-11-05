@@ -1,0 +1,52 @@
+# SolanceLab plugins
+
+Made by House of Solance · free for noncommercial use · credit required
+
+## What it is
+
+One plugin store with every plugin House of Solance publishes, for Claude Code and for Codex. Each plugin lives in its
+own repository; this store only points at them, so you add one store and see them all.
+
+## Plugins
+
+| Plugin | What it does | Claude Code | Codex |
+|---|---|---|---|
+| [antechamber](https://github.com/SolanceLab/antechamber) | Recall for your AI: one question searches every store you connect and returns only the best matches. Runs on your own computer. | yes | yes |
+| [antechamber-remote](https://github.com/SolanceLab/antechamber) | The same Antechamber behind a sign-in, for claude.ai and other cloud apps. Needs the remote door from the Antechamber README. | yes | no |
+| [scriptorium](https://github.com/SolanceLab/scriptorium) | Turns your chat history into memories you can check, with their exact words, source lines and real dates. | yes | coming |
+| [stack-guard](https://github.com/SolanceLab/stack-guard) | Checks what you run for known security holes, explains them in plain words, and applies the safe fixes after your yes. | yes | coming |
+| [discord](https://github.com/SolanceLab/tertulia-ai-discord-engine) (Tertúlia) | Discord tools for your AI: messages, files, reactions, polls, threads, forums, moderation. | yes | coming |
+
+Each plugin talks to its own server or tool, set up from that plugin's README. The plugin is the connection and the
+instructions, not the server.
+
+For Antechamber and Scriptorium together as one memory set, see [presence-app](https://github.com/SolanceLab/presence-app).
+
+## Install
+
+**Claude Code:**
+
+```
+claude plugin marketplace add SolanceLab/plugins
+claude plugin install antechamber@solancelab
+```
+
+**Codex:** in the app, Plugins, Add, Add a marketplace, source `SolanceLab/plugins`. Or from the command line:
+
+```
+codex plugin marketplace add SolanceLab/plugins
+codex plugin add antechamber@solancelab
+```
+
+Codex has no settings prompt, so its plugins point at the default local address and read their key from an
+environment variable named in each plugin's README (Antechamber: `ANTECHAMBER_MCP_KEY`).
+
+## Credit and use
+
+The store and its descriptions are made by House of Solance. Each plugin keeps its own licence, in its own repository.
+Every copy of this store, changed or not, must carry the licence and this line:
+`Required Notice: Copyright (c) 2026 House of Solance (https://github.com/SolanceLab)`
+
+## Licence
+
+[PolyForm Noncommercial 1.0.0](LICENSE.md). See [NOTICE.md](NOTICE.md).

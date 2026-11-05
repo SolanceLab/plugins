@@ -1,0 +1,81 @@
+{
+  "name": "solancelab",
+  "owner": {
+    "name": "House of Solance"
+  },
+  "metadata": {
+    "description": "Every plugin House of Solance publishes, in one place.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "antechamber",
+      "description": "Recall for your AI: one question searches every store you connect (notes, chats, memories, a vault, code) and returns only the best matches. Runs on your own computer.",
+      "author": {
+        "name": "House of Solance"
+      },
+      "category": "memory",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/SolanceLab/antechamber.git",
+        "path": "plugin",
+        "ref": "v1.1.0"
+      }
+    },
+    {
+      "name": "antechamber-remote",
+      "description": "Antechamber behind a sign-in, for claude.ai and other cloud apps. Needs the remote door from the Antechamber README.",
+      "author": {
+        "name": "House of Solance"
+      },
+      "category": "memory",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/SolanceLab/antechamber.git",
+        "path": "plugin-remote",
+        "ref": "v1.1.0"
+      }
+    },
+    {
+      "name": "scriptorium",
+      "description": "Turns your chat history into memories you can check, each with its exact words, source lines and real date; keeps a people roster that fills itself. Runs on your own computer.",
+      "author": {
+        "name": "House of Solance"
+      },
+      "category": "memory",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/SolanceLab/scriptorium.git",
+        "path": "plugin",
+        "ref": "v1.0.0"
+      }
+    },
+    {
+      "name": "stack-guard",
+      "description": "Find what you actually run, check every package and runtime for known security holes, explain it in plain words, and apply the safe fixes after your yes.",
+      "author": {
+        "name": "House of Solance"
+      },
+      "category": "security",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/SolanceLab/stack-guard.git",
+        "path": "plugins/stack-guard",
+        "ref": "v1.6.3"
+      }
+    },
+    {
+      "name": "discord",
+      "description": "Discord tools for your AI (49): messages, DMs, images and files, reactions, polls, threads, forums, channel and role admin, moderation, and the bot's own instructions. Talks to your own Tertúlia tools server.",
+      "author": {
+        "name": "House of Solance"
+      },
+      "category": "companions",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/SolanceLab/tertulia-ai-discord-engine.git",
+        "path": "plugin"
+      }
+    }
+  ]
+}

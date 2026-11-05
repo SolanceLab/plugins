@@ -1,0 +1,22 @@
+{
+  "name": "solancelab",
+  "interface": {
+    "displayName": "SolanceLab"
+  },
+  "plugins": [
+    {
+      "name": "antechamber",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/SolanceLab/antechamber.git",
+        "path": "./plugin",
+        "ref": "v1.1.0"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
