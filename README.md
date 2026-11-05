@@ -16,10 +16,13 @@ own repository; this store only points at them, so you add one store and see the
 | [stack-guard](https://github.com/SolanceLab/stack-guard) | Checks what you run for known security holes, explains them in plain words, and applies the safe fixes after your yes. | yes | coming |
 | [discord](https://github.com/SolanceLab/tertulia-ai-discord-engine) (Tertúlia) | Discord tools for your AI: messages, files, reactions, polls, threads, forums, moderation. | yes | coming |
 
-Each plugin talks to its own server or tool, set up from that plugin's README. The plugin is the connection and the
-instructions, not the server.
-
 For Antechamber and Scriptorium together as one memory set, see [presence-app](https://github.com/SolanceLab/presence-app).
+
+## What you need
+
+- Claude Code, or the Codex app or command line.
+- Whatever each plugin's own README asks for: most plugins are the connection and the instructions, and the server or
+  tool they talk to is set up from that plugin's repository.
 
 ## Install
 
@@ -37,14 +40,37 @@ codex plugin marketplace add SolanceLab/plugins
 codex plugin add antechamber@solancelab
 ```
 
-Codex has no settings prompt, so its plugins point at the default local address and read their key from an
-environment variable named in each plugin's README (Antechamber: `ANTECHAMBER_MCP_KEY`).
+## Settings
+
+The store has none. In Claude Code each plugin asks for its own settings when you install it. Codex has no settings
+prompt, so its plugins point at the default local address and read their key from an environment variable named in
+each plugin's README (Antechamber: `ANTECHAMBER_MCP_KEY`).
+
+## Tools
+
+The store adds no tools of its own; each plugin brings its tools and skills, listed in its README.
+
+## Limits
+
+- Codex lists only the plugins that carry Codex files; the others say "coming" above.
+- The store points at fixed releases. A plugin's newest changes reach you when its release here is updated.
+
+## How it works
+
+`.claude-plugin/marketplace.json` is the list Claude Code reads and `.agents/plugins/marketplace.json` the one Codex
+reads. Each entry names a plugin, its repository, the folder it lives in and the release it is pinned to. `make test`
+checks that both lists are valid, agree with each other, and point only at SolanceLab repositories.
 
 ## Credit and use
 
-The store and its descriptions are made by House of Solance. Each plugin keeps its own licence, in its own repository.
-Every copy of this store, changed or not, must carry the licence and this line:
+The store and its descriptions are made by House of Solance. You're welcome to use it, change it and build on it for
+any noncommercial purpose, as long as our credit travels with it. Each plugin keeps its own licence, in its own
+repository.
+
+**Keep the credit.** Every copy, changed or not, must carry the licence and this line:
 `Required Notice: Copyright (c) 2026 House of Solance (https://github.com/SolanceLab)`
+
+**Commercial use needs our permission.** Ask us first.
 
 ## Licence
 
