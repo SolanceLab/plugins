@@ -57,6 +57,8 @@ Third-party marketplaces do not auto-update by default. To turn it on once in Cl
 To update by hand: `claude plugin marketplace update solancelab`, then `claude plugin update <plugin>@solancelab`, then
 restart. In Codex: `codex plugin marketplace upgrade solancelab`.
 
+The store updates itself: a daily job moves each plugin to its newest release, runs the store tests, and commits only when they pass.
+
 Each plugin may also tell you itself when a newer version is out; its README says how, and how to switch that off.
 
 ## Limits
