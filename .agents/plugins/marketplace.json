@@ -18,6 +18,21 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Productivity"
+    },
+    {
+      "name": "vault-map",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/SolanceLab/vault-map.git",
+        "path": "./plugin",
+        "ref": "v1.4.0",
+        "sha": "cb6464c24f1183e99e8edbf610f60b8a8ed6a1e7"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
     }
   ]
 }

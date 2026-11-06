@@ -65,6 +65,21 @@
         "url": "https://github.com/SolanceLab/tertulia-ai-discord-engine.git",
         "path": "plugin"
       }
+    },
+    {
+      "name": "vault-map",
+      "description": "Ask where you wrote about something and get the passage back, from a map of your markdown or Obsidian vault. Runs on your own computer; nothing leaves it.",
+      "author": {
+        "name": "House of Solance"
+      },
+      "category": "memory",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/SolanceLab/vault-map.git",
+        "path": "plugin",
+        "ref": "v1.4.0",
+        "sha": "cb6464c24f1183e99e8edbf610f60b8a8ed6a1e7"
+      }
     }
   ]
 }

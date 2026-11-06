@@ -15,6 +15,7 @@ own repository; this store only points at them, so you add one store and see the
 | [scriptorium](https://github.com/SolanceLab/scriptorium) | Turns your chat history into memories you can check, with their exact words, source lines and real dates. | yes | coming |
 | [stack-guard](https://github.com/SolanceLab/stack-guard) | Checks what you run for known security holes, explains them in plain words, and applies the safe fixes after your yes. | yes | coming |
 | [discord](https://github.com/SolanceLab/tertulia-ai-discord-engine) (Tertúlia) | Discord tools for your AI: messages, files, reactions, polls, threads, forums, moderation. | yes | coming |
+| [vault-map](https://github.com/SolanceLab/vault-map) | Ask where you wrote about something and get the passage back, from a map of your markdown or Obsidian vault. Runs on your own computer; nothing leaves it. | yes | yes |
 
 For Antechamber and Scriptorium together as one memory set, see [presence-app](https://github.com/SolanceLab/presence-app).
 
