@@ -78,6 +78,21 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Creative"
+    },
+    {
+      "name": "garmin-mcp-cloud",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/SolanceLab/garmin-mcp-cloud.git",
+        "path": "./plugin",
+        "ref": "v1.2.0",
+        "sha": "44ae76f8e22156b0093305883d87acb024c76133"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Health"
     }
   ]
 }

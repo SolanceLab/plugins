@@ -19,6 +19,7 @@ own repository; this store only points at them, so you add one store and see the
 | [solance-canvas](https://github.com/SolanceLab/solance-canvas) | Generate or edit images through your own Canvas Worker, with seven image providers behind one interface. The Worker runs in your own Cloudflare account. | yes | yes |
 | [claude-config-dashboard](https://github.com/SolanceLab/claude-config-dashboard) | A local, read-only page that lists everything in your .claude folder: skills, agents, commands, workflows, MCP servers, hooks, plugins, settings. Runs on your own computer. | yes | yes |
 | [escutario](https://github.com/SolanceLab/escutario) | A local ear for songs: measures pitch, held notes, riffs, voices, breath and arrivals, and draws a listening score you can play and mark. Runs on your own computer. | yes | yes |
+| [garmin-mcp-cloud](https://github.com/SolanceLab/garmin-mcp-cloud) | Your own Garmin Connect health data (sleep, heart rate, stress, steps, hydration, cycle, training) as 20 tools, through a Worker you run in your own Cloudflare account. Claude Code asks for your Worker address and key; in Codex you add the Worker once with one command (the plugin's skill shows it). | yes | yes |
 
 For Antechamber and Scriptorium together as one memory set, see [presence-app](https://github.com/SolanceLab/presence-app).
 
