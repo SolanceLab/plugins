@@ -80,6 +80,21 @@
         "ref": "v1.4.0",
         "sha": "cb6464c24f1183e99e8edbf610f60b8a8ed6a1e7"
       }
+    },
+    {
+      "name": "solance-canvas",
+      "description": "Generate or edit images through your own Canvas Worker, with seven image providers (Gemini, Grok, fal, OpenAI, Stability, Agnes, Venice) behind one interface. The Worker runs in your own Cloudflare account.",
+      "author": {
+        "name": "House of Solance"
+      },
+      "category": "creative",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/SolanceLab/solance-canvas.git",
+        "path": "plugin",
+        "ref": "v1.4.0",
+        "sha": "53b2a9a425abc82a6a938cbe201fcc657d5ef469"
+      }
     }
   ]
 }
