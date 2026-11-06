@@ -2,7 +2,7 @@
 
 ## 1.1.0
 
-The store lists five more rooms, each in both lists (Claude Code and Codex): vault-map, solance-canvas, claude-config-dashboard, escutario and garmin-mcp-cloud. Every entry is pinned to its release commit. A test keeps the README table and both lists in step.
+The store lists five more rooms, each in both lists (Claude Code and Codex): vault-map, solance-canvas, claude-config-dashboard, escutario and garmin-mcp-cloud. Every entry is pinned to its release commit. A test keeps the README table and both lists in step. Antechamber is pinned to 1.2.0 (it starts itself in Claude Code and Codex).
 
 ## 1.0.1
 
