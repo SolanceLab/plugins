@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.0
+
+The store lists five more rooms, each in both lists (Claude Code and Codex): vault-map, solance-canvas, claude-config-dashboard, escutario and garmin-mcp-cloud. Every entry is pinned to its release commit. A test keeps the README table and both lists in step.
+
 ## 1.0.1
 
 Pins moved to the newest releases: scriptorium v1.0.0 → v1.1.0.

@@ -47,6 +47,16 @@ class Store(unittest.TestCase):
         for name, src in self.sources(self.codex):
             self.assertEqual(src.get("ref"), claude[name], name)
 
+    def test_readme_table_lists_every_plugin_with_its_codex_status(self):
+        with open(os.path.join(ROOT, "README.md"), encoding="utf-8") as fh:
+            rows = [l for l in fh.read().splitlines() if l.startswith("| [")]
+        codex = {p["name"] for p in self.codex["plugins"]}
+        for p in self.claude["plugins"]:
+            match = [r for r in rows if p["source"]["url"][:-4] in r]
+            self.assertEqual(len(match), 1, p["name"])
+            cells = [c.strip() for c in match[0].strip("|").split("|")]
+            self.assertEqual(cells[-1] == "yes", p["name"] in codex, p["name"])
+
 
 if __name__ == "__main__":
     unittest.main()
