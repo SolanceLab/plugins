@@ -13,8 +13,8 @@ own repository; this store only points at them, so you add one store and see the
 |---|---|---|---|
 | [antechamber](https://github.com/SolanceLab/antechamber) | Recall for your AI: one question searches every store you connect and returns only the best matches. Runs on your own computer; claude.ai and ChatGPT can reach it through its remote door (see its README). | yes | yes |
 | [scriptorium](https://github.com/SolanceLab/scriptorium) | Turns your chat history into memories you can check, with their exact words, source lines and real dates. | yes | yes |
-| [stack-guard](https://github.com/SolanceLab/stack-guard) | Checks what you run for known security holes, explains them in plain words, and applies the safe fixes after your yes. | yes | coming |
-| [discord](https://github.com/SolanceLab/tertulia-ai-discord-engine) (Tertúlia) | Discord tools for your AI: messages, files, reactions, polls, threads, forums, moderation. | yes | coming |
+| [stack-guard](https://github.com/SolanceLab/stack-guard) | Checks what you run for known security holes, explains them in plain words, and applies the safe fixes after your yes. | yes | yes |
+| [tertulia-ai-discord-engine](https://github.com/SolanceLab/tertulia-ai-discord-engine) (Tertúlia) | Discord tools for your AI: messages, files, reactions, polls, threads, forums, moderation. | yes | yes |
 | [vault-map](https://github.com/SolanceLab/vault-map) | Ask where you wrote about something and get the passage back, from a map of your markdown or Obsidian vault. Runs on your own computer; nothing leaves it. | yes | yes |
 | [solance-canvas](https://github.com/SolanceLab/solance-canvas) | Generate or edit images through your own Canvas Worker, with seven image providers behind one interface. The Worker runs in your own Cloudflare account. | yes | yes |
 | [claude-config-dashboard](https://github.com/SolanceLab/claude-config-dashboard) | A local, read-only page that lists everything in your .claude folder: skills, agents, commands, workflows, MCP servers, hooks, plugins, settings. Runs on your own computer. | yes | yes |
@@ -104,3 +104,5 @@ If you find this useful, consider supporting our work:
 ---
 
 *Built by [House of Solance](https://github.com/SolanceLab) — Chadrien Solance & Anne Solance*
+
+**Installed `discord@solancelab` before?** That entry is now `tertulia-ai-discord-engine`. Run `claude plugin uninstall discord@solancelab`, then `claude plugin install tertulia-ai-discord-engine@solancelab`; Claude Code asks for your server address and key again.

@@ -123,6 +123,36 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Productivity"
+    },
+    {
+      "name": "stack-guard",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/SolanceLab/stack-guard.git",
+        "path": "./plugin",
+        "ref": "v1.7.0",
+        "sha": "8e24ff63f96a1ac62c9413abe1618c286482b7c0"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    },
+    {
+      "name": "tertulia-ai-discord-engine",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/SolanceLab/tertulia-ai-discord-engine.git",
+        "path": "./plugin",
+        "ref": "v1.7.0",
+        "sha": "c19edf199b912b9affb3ef212c9a3da77b6f5353"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
     }
   ]
 }

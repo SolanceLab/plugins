@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Every plugin House of Solance publishes, in one place.",
-    "version": "1.1.0"
+    "version": "1.2.0"
   },
   "plugins": [
     {
@@ -48,13 +48,13 @@
       "source": {
         "source": "git-subdir",
         "url": "https://github.com/SolanceLab/stack-guard.git",
-        "path": "plugins/stack-guard",
-        "ref": "v1.6.3",
-        "sha": "0f31579cbbc9c3a2edf44a0f4d2d8fe4df5fc9ee"
+        "path": "plugin",
+        "ref": "v1.7.0",
+        "sha": "8e24ff63f96a1ac62c9413abe1618c286482b7c0"
       }
     },
     {
-      "name": "discord",
+      "name": "tertulia-ai-discord-engine",
       "description": "Discord tools for your AI (49): messages, DMs, images and files, reactions, polls, threads, forums, channel and role admin, moderation, and the bot's own instructions. Talks to your own Tertúlia tools server.",
       "author": {
         "name": "House of Solance"
@@ -63,7 +63,9 @@
       "source": {
         "source": "git-subdir",
         "url": "https://github.com/SolanceLab/tertulia-ai-discord-engine.git",
-        "path": "plugin"
+        "path": "plugin",
+        "ref": "v1.7.0",
+        "sha": "c19edf199b912b9affb3ef212c9a3da77b6f5353"
       }
     },
     {

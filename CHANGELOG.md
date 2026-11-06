@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.0
+
+stack-guard 1.7.0 and Tertúlia 1.7.0 are pinned to their releases and now listed for Codex too. Tertúlia's plugin is named tertulia-ai-discord-engine (it was listed as discord, unpinned). If you installed `discord@solancelab`, move over by uninstalling it and installing the new name: `claude plugin uninstall discord@solancelab` then `claude plugin install tertulia-ai-discord-engine@solancelab`. Your server address and key settings are asked for again. The weekly dependency check now covers only the workflows, so it stops failing on package files the store does not have.
+
 ## 1.1.0
 
 The store lists five more rooms, each in both lists (Claude Code and Codex): vault-map, solance-canvas, claude-config-dashboard, escutario and garmin-mcp-cloud. Every entry is pinned to its release commit. A test keeps the README table and both lists in step. Antechamber is pinned to 1.2.0 (it starts itself in Claude Code and Codex).
