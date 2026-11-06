@@ -140,6 +140,21 @@
         "ref": "v1.2.0",
         "sha": "c0c3f417d1198ff14ed8b6b0b8ee2ca1100205c9"
       }
+    },
+    {
+      "name": "presence-app",
+      "description": "The whole memory set in one install: Scriptorium writes the record, Antechamber finds it again, vault-map adds a notes folder as a shelf. Runs on your own computer.",
+      "author": {
+        "name": "House of Solance"
+      },
+      "category": "memory",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/SolanceLab/presence-app.git",
+        "path": "plugin",
+        "ref": "v2.2.0",
+        "sha": "b76b914a157968ea69480dfa429a0296bb2cb3c2"
+      }
     }
   ]
 }
