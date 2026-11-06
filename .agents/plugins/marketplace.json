@@ -63,6 +63,21 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Developer"
+    },
+    {
+      "name": "escutario",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/SolanceLab/escutario.git",
+        "path": "./plugin",
+        "ref": "v0.3.0",
+        "sha": "e1d25dc8623a4690afed73ce77c374cec420ea79"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Creative"
     }
   ]
 }

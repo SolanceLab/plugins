@@ -110,6 +110,21 @@
         "ref": "v1.4.0",
         "sha": "1a57ffcb317f85e96df3b2e5360515d24ae1afc2"
       }
+    },
+    {
+      "name": "escutario",
+      "description": "A local ear for songs: splits a song into its parts and measures pitch, held notes, riffs, voices, breath and arrivals, then draws a listening score you can play and mark. Runs on your own computer.",
+      "author": {
+        "name": "House of Solance"
+      },
+      "category": "creative",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/SolanceLab/escutario.git",
+        "path": "plugin",
+        "ref": "v0.3.0",
+        "sha": "e1d25dc8623a4690afed73ce77c374cec420ea79"
+      }
     }
   ]
 }
