@@ -26,7 +26,7 @@
         "url": "https://github.com/SolanceLab/vault-map.git",
         "path": "./plugin",
         "ref": "v1.4.0",
-        "sha": "cb6464c24f1183e99e8edbf610f60b8a8ed6a1e7"
+        "sha": "b14f7b1383c2add8cc66730cc9bfa23ef5a4b12d"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -41,7 +41,7 @@
         "url": "https://github.com/SolanceLab/solance-canvas.git",
         "path": "./plugin",
         "ref": "v1.4.0",
-        "sha": "53b2a9a425abc82a6a938cbe201fcc657d5ef469"
+        "sha": "1aa9e4b8b766c2071cbabda5eaf6b1d0ffd3fe3d"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -56,7 +56,7 @@
         "url": "https://github.com/SolanceLab/claude-config-dashboard.git",
         "path": "./plugin",
         "ref": "v1.4.0",
-        "sha": "1a57ffcb317f85e96df3b2e5360515d24ae1afc2"
+        "sha": "40b8daa19e5e3718420382ce1fe281da58fd9811"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -71,7 +71,7 @@
         "url": "https://github.com/SolanceLab/escutario.git",
         "path": "./plugin",
         "ref": "v0.3.0",
-        "sha": "e1d25dc8623a4690afed73ce77c374cec420ea79"
+        "sha": "36ba4e0ffbebf711d4ea7b546306d62efb7c595e"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -86,7 +86,7 @@
         "url": "https://github.com/SolanceLab/garmin-mcp-cloud.git",
         "path": "./plugin",
         "ref": "v1.2.0",
-        "sha": "44ae76f8e22156b0093305883d87acb024c76133"
+        "sha": "c0c3f417d1198ff14ed8b6b0b8ee2ca1100205c9"
       },
       "policy": {
         "installation": "AVAILABLE",
