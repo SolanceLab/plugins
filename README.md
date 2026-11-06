@@ -17,6 +17,7 @@ own repository; this store only points at them, so you add one store and see the
 | [discord](https://github.com/SolanceLab/tertulia-ai-discord-engine) (Tertúlia) | Discord tools for your AI: messages, files, reactions, polls, threads, forums, moderation. | yes | coming |
 | [vault-map](https://github.com/SolanceLab/vault-map) | Ask where you wrote about something and get the passage back, from a map of your markdown or Obsidian vault. Runs on your own computer; nothing leaves it. | yes | yes |
 | [solance-canvas](https://github.com/SolanceLab/solance-canvas) | Generate or edit images through your own Canvas Worker, with seven image providers behind one interface. The Worker runs in your own Cloudflare account. | yes | yes |
+| [claude-config-dashboard](https://github.com/SolanceLab/claude-config-dashboard) | A local, read-only page that lists everything in your .claude folder: skills, agents, commands, workflows, MCP servers, hooks, plugins, settings. Runs on your own computer. | yes | yes |
 
 For Antechamber and Scriptorium together as one memory set, see [presence-app](https://github.com/SolanceLab/presence-app).
 

@@ -95,6 +95,21 @@
         "ref": "v1.4.0",
         "sha": "53b2a9a425abc82a6a938cbe201fcc657d5ef469"
       }
+    },
+    {
+      "name": "claude-config-dashboard",
+      "description": "A local, read-only page that lists everything in your .claude folder (skills, agents, commands, workflows, MCP servers, hooks, plugins, settings). Runs on your own computer.",
+      "author": {
+        "name": "House of Solance"
+      },
+      "category": "developer-tools",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/SolanceLab/claude-config-dashboard.git",
+        "path": "plugin",
+        "ref": "v1.4.0",
+        "sha": "1a57ffcb317f85e96df3b2e5360515d24ae1afc2"
+      }
     }
   ]
 }
