@@ -34,8 +34,8 @@
         "source": "git-subdir",
         "url": "https://github.com/SolanceLab/scriptorium.git",
         "path": "plugin",
-        "ref": "v1.1.0",
-        "sha": "1d69c4197f6ac67c9e0525656468262262b10f74"
+        "ref": "v1.1.1",
+        "sha": "0162242158b0524d56425ecbed46303d04e178fc"
       }
     },
     {

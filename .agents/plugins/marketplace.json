@@ -20,6 +20,21 @@
       "category": "Productivity"
     },
     {
+      "name": "scriptorium",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/SolanceLab/scriptorium.git",
+        "path": "./plugin",
+        "ref": "v1.1.1",
+        "sha": "0162242158b0524d56425ecbed46303d04e178fc"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
       "name": "vault-map",
       "source": {
         "source": "git-subdir",
