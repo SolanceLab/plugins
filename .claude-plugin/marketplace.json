@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Every plugin House of Solance publishes, in one place.",
-    "version": "1.3.0"
+    "version": "1.4.0"
   },
   "plugins": [
     {
@@ -171,6 +171,21 @@
         "path": "plugin",
         "ref": "v0.1.0",
         "sha": "76c7746964a590187a6e81c5ae645a19e2722453"
+      }
+    },
+    {
+      "name": "work-map",
+      "description": "Keep your project record in plain markdown lines (decisions, pipeline items) with the writer commands and a skill, and read it back as a map: what is open, waiting and recently touched. Runs on your own computer.",
+      "author": {
+        "name": "House of Solance"
+      },
+      "category": "productivity",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/SolanceLab/work-map.git",
+        "path": "plugin",
+        "ref": "v0.1.1",
+        "sha": "f4fb89e394bc14318ab88f16e0b5a5dbeafd6961"
       }
     }
   ]

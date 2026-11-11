@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.0
+
+New plugin: work-map v0.1.1, the record keeper Gazeta reads: plain markdown lines, the commands that write them, and a map back.
+
 ## 1.3.0
 
 New plugin: Gazeta v0.1.0, a short paper your coding session reads when it starts; you plug in the sources.
