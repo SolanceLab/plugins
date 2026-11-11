@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.1
+
+Pins moved to the newest releases: gazeta v0.1.0 → v0.1.1.
+
 ## 1.4.0
 
 New plugin: work-map v0.1.1, the record keeper Gazeta reads: plain markdown lines, the commands that write them, and a map back.

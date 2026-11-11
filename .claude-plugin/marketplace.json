@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Every plugin House of Solance publishes, in one place.",
-    "version": "1.4.0"
+    "version": "1.4.1"
   },
   "plugins": [
     {
@@ -169,8 +169,8 @@
         "source": "git-subdir",
         "url": "https://github.com/SolanceLab/gazeta.git",
         "path": "plugin",
-        "ref": "v0.1.0",
-        "sha": "76c7746964a590187a6e81c5ae645a19e2722453"
+        "ref": "v0.1.1",
+        "sha": "fc01509483b0c75fd3463cc499045f122fa4c72e"
       }
     },
     {
