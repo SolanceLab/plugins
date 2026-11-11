@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.5
+
+Pins moved to the newest releases: stack-guard v1.8.0 → v1.8.1.
+
 ## 1.2.4
 
 Pins moved to the newest releases: stack-guard v1.7.2 → v1.8.0.

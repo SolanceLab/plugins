@@ -130,8 +130,8 @@
         "source": "git-subdir",
         "url": "https://github.com/SolanceLab/stack-guard.git",
         "path": "./plugin",
-        "ref": "v1.8.0",
-        "sha": "c3ad18324a4bd13edca1abf2c454880562712427"
+        "ref": "v1.8.1",
+        "sha": "4c874666eef5141f515898075fd24f6b97002978"
       },
       "policy": {
         "installation": "AVAILABLE",
