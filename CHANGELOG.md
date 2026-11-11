@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.0
+
+New plugin: Gazeta v0.1.0, a short paper your coding session reads when it starts; you plug in the sources.
+
 ## 1.2.5
 
 Pins moved to the newest releases: stack-guard v1.8.0 → v1.8.1.
