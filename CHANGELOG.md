@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.2
+
+Pins moved to the newest releases: stack-guard v1.8.1 → v1.8.2.
+
 ## 1.4.1
 
 Pins moved to the newest releases: gazeta v0.1.0 → v0.1.1.
