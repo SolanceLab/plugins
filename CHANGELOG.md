@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.4
+
+Pins moved to the newest releases: work-map v0.1.1 → v0.2.0.
+
 ## 1.4.3
 
 Pins moved to the newest releases: antechamber v1.2.1 → v1.3.0.

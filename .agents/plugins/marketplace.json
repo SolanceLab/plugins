@@ -175,8 +175,8 @@
         "source": "git-subdir",
         "url": "https://github.com/SolanceLab/work-map.git",
         "path": "./plugin",
-        "ref": "v0.1.1",
-        "sha": "f4fb89e394bc14318ab88f16e0b5a5dbeafd6961"
+        "ref": "v0.2.0",
+        "sha": "443d2d3789affebc970a888a83e107c5dd40c7c4"
       },
       "policy": {
         "installation": "AVAILABLE",
