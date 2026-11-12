@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Every plugin House of Solance publishes, in one place.",
-    "version": "1.4.2"
+    "version": "1.4.3"
   },
   "plugins": [
     {
@@ -19,8 +19,8 @@
         "source": "git-subdir",
         "url": "https://github.com/SolanceLab/antechamber.git",
         "path": "plugin",
-        "ref": "v1.2.1",
-        "sha": "936e836a5702c98e320bbf6a297084bcad97e935"
+        "ref": "v1.3.0",
+        "sha": "6dc52a6f15ed089a7d05afc5a587c34c5c040860"
       }
     },
     {

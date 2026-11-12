@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.3
+
+Pins moved to the newest releases: antechamber v1.2.1 → v1.3.0.
+
 ## 1.4.2
 
 Pins moved to the newest releases: stack-guard v1.8.1 → v1.8.2.
