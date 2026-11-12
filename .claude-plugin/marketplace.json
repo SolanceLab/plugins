@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Every plugin House of Solance publishes, in one place.",
-    "version": "1.4.4"
+    "version": "1.4.5"
   },
   "plugins": [
     {
@@ -79,8 +79,8 @@
         "source": "git-subdir",
         "url": "https://github.com/SolanceLab/vault-map.git",
         "path": "plugin",
-        "ref": "v1.4.0",
-        "sha": "b14f7b1383c2add8cc66730cc9bfa23ef5a4b12d"
+        "ref": "v1.4.1",
+        "sha": "957a68302f9da6a35845ee9fc1233c2e45dc4a16"
       }
     },
     {

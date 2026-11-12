@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.5
+
+Pins moved to the newest releases: vault-map v1.4.0 → v1.4.1.
+
 ## 1.4.4
 
 Pins moved to the newest releases: work-map v0.1.1 → v0.2.0.
