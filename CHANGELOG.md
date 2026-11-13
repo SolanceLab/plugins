@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.8
+
+Pins moved to the newest releases: stack-guard v1.8.3 → v1.9.0.
+
 ## 1.4.7
 
 Pins moved to the newest releases: work-map v0.2.0 → v0.3.0.
