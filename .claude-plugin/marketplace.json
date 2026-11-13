@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Every plugin House of Solance publishes, in one place.",
-    "version": "1.4.5"
+    "version": "1.4.6"
   },
   "plugins": [
     {
@@ -49,8 +49,8 @@
         "source": "git-subdir",
         "url": "https://github.com/SolanceLab/stack-guard.git",
         "path": "plugin",
-        "ref": "v1.8.2",
-        "sha": "a476986203f4ee346f68124fd272eeaf2312a241"
+        "ref": "v1.8.3",
+        "sha": "91d2c560cc4047ee77cbe98f902f7ad403536189"
       }
     },
     {

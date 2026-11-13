@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.6
+
+Pins moved to the newest releases: stack-guard v1.8.2 → v1.8.3.
+
 ## 1.4.5
 
 Pins moved to the newest releases: vault-map v1.4.0 → v1.4.1.
