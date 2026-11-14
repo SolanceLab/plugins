@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.9
+
+Pins moved to the newest releases: tertulia-ai-discord-engine v1.7.0 → v1.7.1.
+
 ## 1.4.8
 
 Pins moved to the newest releases: stack-guard v1.8.3 → v1.9.0.
