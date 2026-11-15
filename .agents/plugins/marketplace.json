@@ -145,8 +145,8 @@
         "source": "git-subdir",
         "url": "https://github.com/SolanceLab/tertulia-ai-discord-engine.git",
         "path": "./plugin",
-        "ref": "v2.0.0",
-        "sha": "49b7b9ce2ff20036b16614f266465d84f9389a5a"
+        "ref": "v2.1.0",
+        "sha": "33b3f93207eef6dbd5675e21cfb0243e85f7cac5"
       },
       "policy": {
         "installation": "AVAILABLE",
