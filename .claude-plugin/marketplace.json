@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Every plugin House of Solance publishes, in one place.",
-    "version": "1.4.13"
+    "version": "1.4.14"
   },
   "plugins": [
     {
@@ -184,8 +184,8 @@
         "source": "git-subdir",
         "url": "https://github.com/SolanceLab/work-map.git",
         "path": "plugin",
-        "ref": "v0.5.0",
-        "sha": "f5e35048376e77deaed88ed18894f248421ce970"
+        "ref": "v0.5.1",
+        "sha": "4eb42a1a61635056dc8122bfa1a59e34a665293f"
       }
     }
   ]
