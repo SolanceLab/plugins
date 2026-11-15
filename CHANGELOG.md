@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.12
+
+Pins moved to the newest releases: tertulia-ai-discord-engine v1.7.1 → v2.0.0.
+
 ## 1.4.11
 
 Pins moved to the newest releases: work-map v0.4.0 → v0.5.0.
