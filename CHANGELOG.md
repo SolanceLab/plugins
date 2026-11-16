@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.18
+
+Pins moved to the newest releases: scriptorium v1.1.1 → v1.2.0.
+
 ## 1.4.17
 
 Pins moved to the newest releases: vault-map v1.4.1 → v1.4.2.

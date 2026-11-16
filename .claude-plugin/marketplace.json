@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Every plugin House of Solance publishes, in one place.",
-    "version": "1.4.17"
+    "version": "1.4.18"
   },
   "plugins": [
     {
@@ -34,8 +34,8 @@
         "source": "git-subdir",
         "url": "https://github.com/SolanceLab/scriptorium.git",
         "path": "plugin",
-        "ref": "v1.1.1",
-        "sha": "0162242158b0524d56425ecbed46303d04e178fc"
+        "ref": "v1.2.0",
+        "sha": "3e589d373eaeac596571e90735b8db0ac2727cba"
       }
     },
     {
