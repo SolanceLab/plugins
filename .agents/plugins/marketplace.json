@@ -40,8 +40,8 @@
         "source": "git-subdir",
         "url": "https://github.com/SolanceLab/vault-map.git",
         "path": "./plugin",
-        "ref": "v1.4.1",
-        "sha": "957a68302f9da6a35845ee9fc1233c2e45dc4a16"
+        "ref": "v1.4.2",
+        "sha": "2167c016c911b199df95acc66faee9636eb641ea"
       },
       "policy": {
         "installation": "AVAILABLE",
