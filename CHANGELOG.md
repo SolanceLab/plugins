@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.21
+
+Pins moved to the newest releases: scriptorium v1.2.2 → v1.3.0.
+
 ## 1.4.20
 
 Pins moved to the newest releases: scriptorium v1.2.1 → v1.2.2.
