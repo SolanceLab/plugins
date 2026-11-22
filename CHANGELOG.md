@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.29
+
+Pins moved to the newest releases: scriptorium v1.7.1 → v1.8.0.
+
 ## 1.4.28
 
 Pins moved to the newest releases: stack-guard v1.9.1 → v1.10.0.
