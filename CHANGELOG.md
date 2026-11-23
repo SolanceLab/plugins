@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.33
+
+Pins moved to the newest releases: antechamber v1.4.0 → v1.4.1.
+
 ## 1.4.32
 
 Pins moved to the newest releases: scriptorium v1.9.0 → v2.0.0.
