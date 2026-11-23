@@ -115,8 +115,8 @@
         "source": "git-subdir",
         "url": "https://github.com/SolanceLab/presence-app.git",
         "path": "./plugin",
-        "ref": "v2.2.0",
-        "sha": "b76b914a157968ea69480dfa429a0296bb2cb3c2"
+        "ref": "v2.3.0",
+        "sha": "7c4efb4f9a346779589a324f2b06908f1ffacca5"
       },
       "policy": {
         "installation": "AVAILABLE",

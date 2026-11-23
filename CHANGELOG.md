@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.34
+
+Pins moved to the newest releases: presence-app v2.2.0 → v2.3.0.
+
 ## 1.4.33
 
 Pins moved to the newest releases: antechamber v1.4.0 → v1.4.1.
