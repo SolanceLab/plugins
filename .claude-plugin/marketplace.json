@@ -145,7 +145,7 @@
     },
     {
       "name": "presence-app",
-      "description": "The whole memory set in one install: Scriptorium writes the record, Antechamber finds it again, vault-map adds a notes folder as a shelf. Runs on your own computer.",
+      "description": "The whole memory set in one install: Scriptorium writes the record, Antechamber finds it again, vault-map adds a notes folder as a shelf, work-map remembers why. Runs on your own computer.",
       "author": {
         "name": "House of Solance"
       },
